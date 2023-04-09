@@ -35,6 +35,13 @@ You can create an RPM, by running the `jpackage` Gradle task on a Linux host:
 ```
 *Do note that you will need the `rpm-build` package in order to create an RPM.*
 
+#### deb
+
+You can create a .deb, by running the `jpackage` Gradle task on a `Debian` Linux host:
+```shell
+./gradlew jpackage
+```
+
 #### AppImage
 
 You can create an [AppImage](https://appimage.github.io/) by executing the `AppImage` Gradle task on a Linux host:
