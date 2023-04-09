@@ -82,10 +82,6 @@ In order to create an [RPM](https://en.wikipedia.org/wiki/RPM_Package_Manager), 
 
 ## Credits
 
-### Audio
-
-All audio files have been provided by [ZapSplat](https://zapsplat.com).
-
 ### Images
 
 All images have been provided by [Remix Icon](https://remixicon.com/).
