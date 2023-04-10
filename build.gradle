@@ -78,7 +78,7 @@ jlink {
     }
 }
 
-tasks.register('AppImage') {
+tasks.register('appImage') {
     dependsOn jpackageImage
     doLast {
         copy {
@@ -100,7 +100,7 @@ tasks.register('AppImage') {
     }
 }
 
-configure(AppImage) {
+configure(appImage) {
     group = 'build'
     description = 'Create an AppImage after creating the image of the application'
 }
@@ -110,7 +110,7 @@ clean.doFirst {
     delete 'license.pdf'
     delete 'help.pdf'
     delete 'logs'
-    delete '.advancedportchecker'
+    delete '.advanced-portchecker'
 }
 
 repositories {

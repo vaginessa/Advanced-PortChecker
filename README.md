@@ -69,12 +69,14 @@ The following dependencies are universal:
 * [Gradle](https://gradle.org)
 * [FasterXML/jackson](https://github.com/FasterXML/jackson)
 * [badass-jlink-plugin](https://github.com/beryx/badass-jlink-plugin)
+* [IPAddress](https://seancfoley.github.io/IPAddress/)
 * [Log4j2](https://logging.apache.org/log4j/2.x/)
 * [AtlantaFX](https://github.com/mkpaz/atlantafx)
 
 ### Windows
 
 #### MSI
+
 In order to build an installer (*MSI*) of Advanced PortChecker on Windows, you will need:
 
 * [WiX Toolset](https://wixtoolset.org)

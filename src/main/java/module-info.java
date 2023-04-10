@@ -13,5 +13,7 @@ module AdvancedPortChecker {
     requires com.fasterxml.jackson.databind;
     requires atlantafx.base;
 
+    opens com.codedead.advanced.portchecker.controller to javafx.fxml;
+
     exports com.codedead.advanced.portchecker;
 }

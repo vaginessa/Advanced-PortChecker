@@ -48,6 +48,8 @@ public final class PortController {
         setThreadPoolSize(threadPoolSize);
         threadPool = Executors.newFixedThreadPool(threadPoolSize);
         logger = LogManager.getLogger(PortController.class);
+
+        logger.info("Initializing new PortController object");
     }
 
     /**
