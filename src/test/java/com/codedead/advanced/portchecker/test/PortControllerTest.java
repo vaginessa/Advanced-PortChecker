@@ -1,3 +1,5 @@
+package com.codedead.advanced.portchecker.test;
+
 import com.codedead.advanced.portchecker.controller.PortController;
 import com.codedead.advanced.portchecker.domain.PortScanResult;
 import com.codedead.advanced.portchecker.domain.RangeScanResult;
