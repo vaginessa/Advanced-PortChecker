@@ -6,6 +6,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <GridPane
         prefHeight="370"
         prefWidth="560"
@@ -23,6 +25,13 @@
 
     <MenuBar GridPane.rowIndex="0">
         <Menu text="%File">
+            <MenuItem text="%Exit" onAction="#exitApplication">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../images/close.png"/>
+                    </ImageView>
+                </graphic>
+            </MenuItem>
         </Menu>
         <Menu text="%Edit">
         </Menu>

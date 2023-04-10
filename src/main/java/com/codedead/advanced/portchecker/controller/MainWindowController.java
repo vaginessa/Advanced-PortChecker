@@ -1,5 +1,6 @@
 package com.codedead.advanced.portchecker.controller;
 
+import javafx.fxml.FXML;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -56,5 +57,14 @@ public class MainWindowController {
             throw new NullPointerException("SettingsController cannot be null!");
 
         this.settingsController = settingsController;
+    }
+
+    /**
+     * Exit the application
+     */
+    @FXML
+    private void exitApplication() {
+        logger.info("Exiting application");
+        System.exit(0);
     }
 }
