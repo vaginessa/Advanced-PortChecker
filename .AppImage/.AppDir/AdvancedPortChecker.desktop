@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Advanced PortChecker
+Exec=AdvancedPortChecker
+Icon=AdvancedPortChecker
+Comment=Advanced PortChecker is a free and open-source application that can be used to check if a range of ports are open on a specific host.
+Type=Application
+Categories=Utility;

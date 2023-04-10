@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>com.codedead.advanced.portchecker</id>
+    <metadata_license>FSFAP</metadata_license>
+    <project_license>GPL-3.0-only</project_license>
+    <name>Advanced PortChecker</name>
+    <summary>Check if a range of ports are open on a specific host.</summary>
+
+    <description>
+        <p>
+            Advanced PortChecker is a free and open-source application that can be used to check if a range of ports are open on a specific host.
+        </p>
+    </description>
+
+    <launchable type="desktop-id">AdvancedPortChecker.desktop</launchable>
+
+    <screenshots>
+        <screenshot type="default">
+            <caption>The main window</caption>
+            <image>https://i.imgur.com/qMAV8yS.png</image>
+        </screenshot>
+    </screenshots>
+
+    <url type="homepage">https://codedead.com/software/advanced-portchecker</url>
+</component>
