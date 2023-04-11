@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -36,8 +33,60 @@
         <Menu text="%Edit">
         </Menu>
         <Menu text="%Tools">
+            <MenuItem onAction="#settingsAction" text="%Settings">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../images/settings.png"/>
+                    </ImageView>
+                </graphic>
+            </MenuItem>
         </Menu>
         <Menu text="%Help">
+            <MenuItem onAction="#helpAction" text="%Help">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../images/help.png"/>
+                    </ImageView>
+                </graphic>
+            </MenuItem>
+            <SeparatorMenuItem/>
+            <MenuItem onAction="#updateAction" text="%CheckForUpdates">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../images/update.png"/>
+                    </ImageView>
+                </graphic>
+            </MenuItem>
+            <SeparatorMenuItem/>
+            <MenuItem onAction="#homepageAction" text="%Homepage">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../images/home.png"/>
+                    </ImageView>
+                </graphic>
+            </MenuItem>
+            <MenuItem onAction="#licenseAction" text="%License">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../images/license.png"/>
+                    </ImageView>
+                </graphic>
+            </MenuItem>
+            <SeparatorMenuItem/>
+            <MenuItem onAction="#donateAction" text="%Donate">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../images/donate.png"/>
+                    </ImageView>
+                </graphic>
+            </MenuItem>
+            <MenuItem onAction="#aboutAction" text="%About">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../images/about.png"/>
+                    </ImageView>
+                </graphic>
+            </MenuItem>
         </Menu>
     </MenuBar>
 

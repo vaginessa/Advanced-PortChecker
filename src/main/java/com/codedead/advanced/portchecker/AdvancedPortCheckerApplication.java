@@ -114,6 +114,7 @@ public class AdvancedPortCheckerApplication extends Application {
         final MainWindowController mainWindowController = loader.getController();
         mainWindowController.setPortController(new PortController(socketTimeout, threadPoolSize));
         mainWindowController.setSettingsController(settingsController);
+        mainWindowController.setResourceBundle(translationBundle);
 
         final Scene scene = new Scene(root);
 
