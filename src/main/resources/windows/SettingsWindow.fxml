@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.codedead.advanced.portchecker.controller.SettingsWindowController"
+          prefHeight="320.0" prefWidth="450.0"
+          alignment="CENTER">
+    <rowConstraints>
+        <RowConstraints vgrow="ALWAYS"/>
+        <RowConstraints/>
+    </rowConstraints>
+    <columnConstraints>
+        <ColumnConstraints hgrow="ALWAYS"/>
+    </columnConstraints>
+
+    <TabPane GridPane.rowIndex="0" tabClosingPolicy="UNAVAILABLE">
+        <Tab text="%General" closable="false">
+            <graphic>
+                <ImageView>
+                    <Image url="@../images/settings.png"/>
+                </ImageView>
+            </graphic>
+            <GridPane alignment="CENTER">
+                <rowConstraints>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                </rowConstraints>
+                <columnConstraints>
+                    <ColumnConstraints/>
+                    <ColumnConstraints/>
+                </columnConstraints>
+
+                <CheckBox GridPane.rowIndex="0" text="%AutoUpdate" GridPane.columnSpan="2">
+                    <GridPane.margin>
+                        <Insets bottom="3" left="3" right="3" top="3"/>
+                    </GridPane.margin>
+                </CheckBox>
+
+                <Label GridPane.rowIndex="1" GridPane.columnIndex="0" text="%Language">
+                    <GridPane.margin>
+                        <Insets bottom="3" left="3" right="3" top="3"/>
+                    </GridPane.margin>
+                </Label>
+                <ComboBox fx:id="cboLanguage" GridPane.rowIndex="1" GridPane.columnIndex="1" maxWidth="Infinity">
+                    <GridPane.margin>
+                        <Insets bottom="3" left="3" right="3" top="3"/>
+                    </GridPane.margin>
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="English"/>
+                            <String fx:value="Français"/>
+                            <String fx:value="Nederlands"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <Label GridPane.rowIndex="2" GridPane.columnIndex="0" text="%Theme">
+                    <GridPane.margin>
+                        <Insets bottom="3" left="3" right="3" top="3"/>
+                    </GridPane.margin>
+                </Label>
+                <ComboBox fx:id="cboTheme" GridPane.rowIndex="2" GridPane.columnIndex="1" maxWidth="Infinity">
+                    <GridPane.margin>
+                        <Insets bottom="3" left="3" right="3" top="3"/>
+                    </GridPane.margin>
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Light"/>
+                            <String fx:value="Dark"/>
+                            <String fx:value="NordLight"/>
+                            <String fx:value="NordDark"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <Label GridPane.rowIndex="3" GridPane.columnIndex="0" text="%LogLevel">
+                    <GridPane.margin>
+                        <Insets bottom="3" left="3" right="3" top="3"/>
+                    </GridPane.margin>
+                </Label>
+                <ComboBox fx:id="cboLogLevel" GridPane.rowIndex="3" GridPane.columnIndex="1" maxWidth="Infinity">
+                    <GridPane.margin>
+                        <Insets bottom="3" left="3" right="3" top="3"/>
+                    </GridPane.margin>
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="OFF"/>
+                            <String fx:value="FATAL"/>
+                            <String fx:value="ERROR"/>
+                            <String fx:value="WARN"/>
+                            <String fx:value="INFO"/>
+                            <String fx:value="DEBUG"/>
+                            <String fx:value="TRACE"/>
+                            <String fx:value="ALL"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+            </GridPane>
+        </Tab>
+    </TabPane>
+</GridPane>

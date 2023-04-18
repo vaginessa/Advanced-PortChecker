@@ -7,6 +7,7 @@ import atlantafx.base.theme.PrimerLight;
 import com.codedead.advanced.portchecker.controller.MainWindowController;
 import com.codedead.advanced.portchecker.controller.PortController;
 import com.codedead.advanced.portchecker.controller.SettingsController;
+import com.codedead.advanced.portchecker.controller.UpdateController;
 import com.codedead.advanced.portchecker.utils.FxUtils;
 import com.codedead.advanced.portchecker.utils.SharedVariables;
 import javafx.application.Application;
@@ -115,6 +116,7 @@ public class AdvancedPortCheckerApplication extends Application {
         mainWindowController.setPortController(new PortController(socketTimeout, threadPoolSize));
         mainWindowController.setSettingsController(settingsController);
         mainWindowController.setResourceBundle(translationBundle);
+        mainWindowController.setUpdateController(new UpdateController(properties.getProperty("updateApi", "https://codedead.com/Software/Advanced%20PortChecker/version.json"), SharedVariables.CURRENT_VERSION));
 
         final Scene scene = new Scene(root);
 
