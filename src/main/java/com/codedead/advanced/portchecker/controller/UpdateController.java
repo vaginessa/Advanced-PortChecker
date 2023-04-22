@@ -63,7 +63,7 @@ public final class UpdateController {
         if (currentPlatform.isEmpty())
             throw new IllegalArgumentException("Current platform cannot be empty!");
 
-        logger.info("Attempting to retrieve the latest PlatformUpdate objects");
+        logger.info("Attempting to retrieve the latest List of PlatformUpdate objects");
 
         final List<PlatformUpdate> updates = getUpdates();
 

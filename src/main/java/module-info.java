@@ -14,6 +14,7 @@ module AdvancedPortChecker {
     requires atlantafx.base;
 
     opens com.codedead.advanced.portchecker.controller to javafx.fxml;
+    opens com.codedead.advanced.portchecker.domain to javafx.fxml;
 
     exports com.codedead.advanced.portchecker;
 }

@@ -75,7 +75,7 @@ public class AdvancedPortCheckerApplication extends Application {
             settingsController = new SettingsController(SharedVariables.PROPERTIES_FILE_LOCATION, SharedVariables.PROPERTIES_RESOURCE_LOCATION);
         } catch (final IOException ex) {
             logger.error("Unable to initialize the SettingsController", ex);
-            FxUtils.showErrorAlert("Exception occurred", ex.getMessage(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
+            FxUtils.showErrorAlert("Exception occurred", ex.toString(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
             Platform.exit();
             return;
         }
@@ -83,7 +83,7 @@ public class AdvancedPortCheckerApplication extends Application {
         final Properties properties = settingsController.getProperties();
         final String languageTag = properties.getProperty("locale", DEFAULT_LOCALE);
 
-        final String theme = properties.getProperty("theme", "light");
+        final String theme = properties.getProperty("theme", "Light");
         switch (theme.toLowerCase()) {
             case "nordlight" -> Application.setUserAgentStylesheet(new NordLight().getUserAgentStylesheet());
             case "norddark" -> Application.setUserAgentStylesheet(new NordDark().getUserAgentStylesheet());
@@ -113,9 +113,9 @@ public class AdvancedPortCheckerApplication extends Application {
         }
 
         final MainWindowController mainWindowController = loader.getController();
+        mainWindowController.setResourceBundle(translationBundle);
         mainWindowController.setPortController(new PortController(socketTimeout, threadPoolSize));
         mainWindowController.setSettingsController(settingsController);
-        mainWindowController.setResourceBundle(translationBundle);
         mainWindowController.setUpdateController(new UpdateController(properties.getProperty("updateApi", "https://codedead.com/Software/Advanced%20PortChecker/version.json"), SharedVariables.CURRENT_VERSION));
 
         final Scene scene = new Scene(root);

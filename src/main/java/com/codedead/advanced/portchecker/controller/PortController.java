@@ -44,10 +44,11 @@ public final class PortController {
      * @param threadPoolSize The thread pool size
      */
     public PortController(final int socketTimeout, final int threadPoolSize) {
+        this.threadPool = Executors.newFixedThreadPool(threadPoolSize);
+        this.logger = LogManager.getLogger(PortController.class);
+
         setSocketTimeout(socketTimeout);
         setThreadPoolSize(threadPoolSize);
-        threadPool = Executors.newFixedThreadPool(threadPoolSize);
-        logger = LogManager.getLogger(PortController.class);
 
         logger.info("Initializing new PortController object");
     }
@@ -68,7 +69,9 @@ public final class PortController {
      */
     public void setSocketTimeout(final int socketTimeout) {
         if (socketTimeout <= 0)
-            throw new IllegalArgumentException("Socket timeout cannot be less than 1");
+            throw new IllegalArgumentException("Socket timeout cannot be less than 1!");
+
+        logger.info("Setting socket timeout to {}", socketTimeout);
 
         this.socketTimeout = socketTimeout;
     }
@@ -88,10 +91,19 @@ public final class PortController {
      * @param threadPoolSize The thread pool size
      */
     public void setThreadPoolSize(int threadPoolSize) {
+        if (threadPoolSize == -1)
+            threadPoolSize = Runtime.getRuntime().availableProcessors();
         if (threadPoolSize <= 0)
-            throw new IllegalArgumentException("Thread pool size cannot be less than 1");
+            throw new IllegalArgumentException("Thread pool size cannot be less than 1!");
+
+        logger.info("Setting thread pool size to {}", threadPoolSize);
 
         this.threadPoolSize = threadPoolSize;
+        if (threadPool != null) {
+            shutdownNow();
+            logger.info("Creating a new ThreadPool with {} threads", threadPoolSize);
+            threadPool = Executors.newFixedThreadPool(threadPoolSize);
+        }
     }
 
     /**
@@ -129,9 +141,9 @@ public final class PortController {
         logger.info("Checking if port {} is open", portNumber);
 
         if (!isValidHost(host))
-            throw new IllegalArgumentException("Host is not valid");
+            throw new IllegalArgumentException("Host is invalid!");
         if (!isValidPortNumber(portNumber))
-            throw new IllegalArgumentException("Port number is not valid");
+            throw new IllegalArgumentException("Port number is not valid!");
 
         try (final Socket s = new Socket()) {
             s.connect(new InetSocketAddress(host, portNumber), socketTimeout);
@@ -145,9 +157,9 @@ public final class PortController {
         logger.info("Checking if port {} is open asynchronously", portNumber);
 
         if (!isValidHost(host))
-            throw new IllegalArgumentException("Host is not valid");
+            throw new IllegalArgumentException("Host is invalid!");
         if (!isValidPortNumber(portNumber))
-            throw new IllegalArgumentException("Port number is not valid");
+            throw new IllegalArgumentException("Port number is not valid!");
 
         return CompletableFuture.supplyAsync(() -> {
             try (final Socket s = new Socket()) {
@@ -171,11 +183,11 @@ public final class PortController {
         logger.info("Scanning range {}-{} on host {}", startPort, endPort, host);
 
         if (!isValidHost(host))
-            throw new IllegalArgumentException("Host is not valid");
+            throw new IllegalArgumentException("Host is invalid!");
         if (!isValidPortNumber(startPort))
-            throw new IllegalArgumentException("Start port is not valid");
+            throw new IllegalArgumentException("Start port is not valid!");
         if (!isValidPortNumber(endPort))
-            throw new IllegalArgumentException("End port is not valid");
+            throw new IllegalArgumentException("End port is not valid!");
 
         final RangeScanResult rangeScanResult = new RangeScanResult(host);
         for (int i = startPort; i <= endPort; i++) {
@@ -197,11 +209,11 @@ public final class PortController {
         logger.info("Scanning range {}-{} on host {} asynchronously", startPort, endPort, host);
 
         if (!isValidHost(host))
-            throw new IllegalArgumentException("Host is not valid");
+            throw new IllegalArgumentException("Host is invalid!");
         if (!isValidPortNumber(startPort))
-            throw new IllegalArgumentException("Start port is not valid");
+            throw new IllegalArgumentException("Start port is not valid!");
         if (!isValidPortNumber(endPort))
-            throw new IllegalArgumentException("End port is not valid");
+            throw new IllegalArgumentException("End port is not valid!");
 
         final List<CompletableFuture<PortScanResult>> portOpenFutures = new ArrayList<>();
 

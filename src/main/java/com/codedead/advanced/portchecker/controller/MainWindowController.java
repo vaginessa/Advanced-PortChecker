@@ -179,15 +179,17 @@ public class MainWindowController {
         } catch (final InterruptedException ex) {
             logger.error("Unable to check for updates", ex);
 
-            if (showExceptions)
+            if (showExceptions) {
                 FxUtils.showErrorAlert(translationBundle.getString("UpdateError"), ex.getMessage(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
+            }
 
             Thread.currentThread().interrupt();
         } catch (final IOException | InvalidHttpResponseCodeException | URISyntaxException ex) {
             logger.error("Unable to check for updates", ex);
 
-            if (showExceptions)
+            if (showExceptions) {
                 FxUtils.showErrorAlert(translationBundle.getString("UpdateError"), ex.getMessage(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
+            }
         }
     }
 
@@ -339,7 +341,7 @@ public class MainWindowController {
             primaryStage.show();
         } catch (final IOException ex) {
             logger.error("Unable to open the AboutWindow", ex);
-            FxUtils.showErrorAlert(translationBundle.getString("AboutWindowError"), ex.getMessage(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
+            FxUtils.showErrorAlert(translationBundle.getString("AboutWindowError"), ex.toString(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
         }
     }
 
@@ -363,6 +365,8 @@ public class MainWindowController {
 
             final SettingsWindowController settingsWindowController = loader.getController();
             settingsWindowController.setResourceBundle(translationBundle);
+            settingsWindowController.setPortController(getPortController());
+            settingsWindowController.setSettingsController(getSettingsController());
 
             final Stage primaryStage = new Stage();
 
@@ -374,7 +378,7 @@ public class MainWindowController {
             primaryStage.show();
         } catch (final IOException ex) {
             logger.error("Unable to open the SettingsWindow", ex);
-            FxUtils.showErrorAlert(translationBundle.getString("SettingsWindowError"), ex.getMessage(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
+            FxUtils.showErrorAlert(translationBundle.getString("SettingsWindowError"), ex.toString(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
         }
     }
 }

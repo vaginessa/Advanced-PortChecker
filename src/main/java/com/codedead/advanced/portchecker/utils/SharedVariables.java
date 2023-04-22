@@ -4,7 +4,7 @@ public final class SharedVariables {
 
     public static final String ICON_URL = "/images/AdvancedPortChecker.png";
     public static final String CURRENT_VERSION = "2.0.0.0";
-    public static final boolean PORTABLE = false;
+    public static final boolean PORTABLE = true;
     public static final String DEFAULT_LOCALE = "en-US";
 
     public static final String PROPERTIES_RESOURCE_LOCATION = "default.properties";

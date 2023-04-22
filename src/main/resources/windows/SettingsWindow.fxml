@@ -8,6 +8,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.geometry.Insets?>
 <?import javafx.collections.FXCollections?>
+<?import com.codedead.advanced.portchecker.domain.NumberTextField?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="com.codedead.advanced.portchecker.controller.SettingsWindowController"
@@ -40,7 +41,7 @@
                     <ColumnConstraints/>
                 </columnConstraints>
 
-                <CheckBox GridPane.rowIndex="0" text="%AutoUpdate" GridPane.columnSpan="2">
+                <CheckBox GridPane.rowIndex="0" GridPane.columnSpan="2" fx:id="chbAutoUpdate" text="%AutoUpdate">
                     <GridPane.margin>
                         <Insets bottom="3" left="3" right="3" top="3"/>
                     </GridPane.margin>
@@ -107,5 +108,80 @@
                 </ComboBox>
             </GridPane>
         </Tab>
+        <Tab text="%Advanced" closable="false">
+            <graphic>
+                <ImageView>
+                    <Image url="@../images/advanced.png"/>
+                </ImageView>
+            </graphic>
+            <GridPane alignment="CENTER">
+                <rowConstraints>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                </rowConstraints>
+                <columnConstraints>
+                    <ColumnConstraints/>
+                    <ColumnConstraints/>
+                </columnConstraints>
+
+                <CheckBox GridPane.rowIndex="0" GridPane.columnSpan="2" fx:id="chbScanAsync" text="%ScanAsync">
+                    <GridPane.margin>
+                        <Insets bottom="3" left="3" right="3" top="3"/>
+                    </GridPane.margin>
+                </CheckBox>
+
+                <Label GridPane.rowIndex="1" GridPane.columnIndex="0" text="%ThreadPoolSize">
+                    <GridPane.margin>
+                        <Insets bottom="3" left="3" right="3" top="3"/>
+                    </GridPane.margin>
+                </Label>
+                <NumberTextField GridPane.rowIndex="1" GridPane.columnIndex="1" min="1" fx:id="ntfThreadPoolSize">
+                    <GridPane.margin>
+                        <Insets bottom="3" left="3" right="3" top="3"/>
+                    </GridPane.margin>
+                </NumberTextField>
+
+                <Label GridPane.rowIndex="2" GridPane.columnIndex="0" text="%SocketTimeout">
+                    <GridPane.margin>
+                        <Insets bottom="3" left="3" right="3" top="3"/>
+                    </GridPane.margin>
+                </Label>
+                <NumberTextField GridPane.rowIndex="2" GridPane.columnIndex="1" min="1" fx:id="ntfSocketTimeout">
+                    <GridPane.margin>
+                        <Insets bottom="3" left="3" right="3" top="3"/>
+                    </GridPane.margin>
+                </NumberTextField>
+            </GridPane>
+        </Tab>
     </TabPane>
+
+    <GridPane GridPane.rowIndex="1">
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+            <ColumnConstraints/>
+        </columnConstraints>
+
+        <!--suppress JavaFxUnresolvedStyleClassReference -->
+        <Button GridPane.columnIndex="0" minWidth="100" text="%Reset"
+                onAction="#resetSettingsAction" styleClass="danger">
+            <GridPane.margin>
+                <Insets bottom="5" left="5" right="5" top="5"/>
+            </GridPane.margin>
+        </Button>
+        <Button GridPane.columnIndex="1" GridPane.halignment="RIGHT" minWidth="100" text="%Cancel"
+                onAction="#cancelAction" cancelButton="true">
+            <GridPane.margin>
+                <Insets bottom="5" right="5" top="5"/>
+            </GridPane.margin>
+        </Button>
+        <!--suppress JavaFxUnresolvedStyleClassReference -->
+        <Button GridPane.columnIndex="2" GridPane.halignment="RIGHT" minWidth="100" text="%Save"
+                onAction="#saveSettingsAction" styleClass="success">
+            <GridPane.margin>
+                <Insets bottom="5" top="5" right="5"/>
+            </GridPane.margin>
+        </Button>
+    </GridPane>
 </GridPane>
