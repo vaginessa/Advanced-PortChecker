@@ -1,5 +1,8 @@
 package com.codedead.advanced.portchecker.controller;
 
+import atlantafx.base.theme.NordDark;
+import atlantafx.base.theme.NordLight;
+import atlantafx.base.theme.PrimerDark;
 import atlantafx.base.theme.PrimerLight;
 import com.codedead.advanced.portchecker.domain.NumberTextField;
 import com.codedead.advanced.portchecker.utils.FxUtils;
@@ -40,12 +43,27 @@ public class SettingsWindowController {
     private final Logger logger;
 
     /**
-     * Intialize the SettingsWindowController
+     * Initialize the SettingsWindowController
      */
     public SettingsWindowController() {
         this.logger = LogManager.getLogger(SettingsWindowController.class);
 
         logger.info("Initializing new SettingsWindowController object");
+    }
+
+    /**
+     * FXML initialize method
+     */
+    @FXML
+    private void initialize() {
+        cboTheme.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
+            switch (newValue) {
+                case "Dark" -> Application.setUserAgentStylesheet(new PrimerDark().getUserAgentStylesheet());
+                case "NordLight" -> Application.setUserAgentStylesheet(new NordLight().getUserAgentStylesheet());
+                case "NordDark" -> Application.setUserAgentStylesheet(new NordDark().getUserAgentStylesheet());
+                default -> Application.setUserAgentStylesheet(new PrimerLight().getUserAgentStylesheet());
+            }
+        });
     }
 
     /**
@@ -207,6 +225,14 @@ public class SettingsWindowController {
     @FXML
     private void cancelAction(final ActionEvent event) {
         logger.info("Closing SettingsWindow");
+
+        switch (getSettingsController().getProperties().getProperty("theme", "Light")) {
+            case "Dark" -> Application.setUserAgentStylesheet(new PrimerDark().getUserAgentStylesheet());
+            case "NordLight" -> Application.setUserAgentStylesheet(new NordLight().getUserAgentStylesheet());
+            case "NordDark" -> Application.setUserAgentStylesheet(new NordDark().getUserAgentStylesheet());
+            default -> Application.setUserAgentStylesheet(new PrimerLight().getUserAgentStylesheet());
+        }
+
         ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
     }
 
