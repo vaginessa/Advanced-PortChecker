@@ -31,6 +31,13 @@
             </MenuItem>
         </Menu>
         <Menu text="%Edit">
+            <MenuItem text="%CancelScan" onAction="#exitApplication">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../images/cancel.png"/>
+                    </ImageView>
+                </graphic>
+            </MenuItem>
         </Menu>
         <Menu text="%Tools">
             <MenuItem onAction="#settingsAction" text="%Settings">
