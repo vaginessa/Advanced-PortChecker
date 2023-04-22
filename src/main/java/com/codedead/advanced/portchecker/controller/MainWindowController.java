@@ -180,7 +180,7 @@ public class MainWindowController {
             logger.error("Unable to check for updates", ex);
 
             if (showExceptions) {
-                FxUtils.showErrorAlert(translationBundle.getString("UpdateError"), ex.getMessage(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
+                FxUtils.showErrorAlert(translationBundle.getString("UpdateError"), ex.toString(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
             }
 
             Thread.currentThread().interrupt();
@@ -188,7 +188,7 @@ public class MainWindowController {
             logger.error("Unable to check for updates", ex);
 
             if (showExceptions) {
-                FxUtils.showErrorAlert(translationBundle.getString("UpdateError"), ex.getMessage(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
+                FxUtils.showErrorAlert(translationBundle.getString("UpdateError"), ex.toString(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
             }
         }
     }
@@ -217,14 +217,14 @@ public class MainWindowController {
                         @Override
                         public void run() {
                             logger.error("Error opening the file", ex);
-                            FxUtils.showErrorAlert(translationBundle.getString("FileExecutionError"), ex.getMessage(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
+                            FxUtils.showErrorAlert(translationBundle.getString("FileExecutionError"), ex.toString(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
                         }
                     });
                 }
             }));
         } catch (final IOException ex) {
             logger.error("Error opening the file", ex);
-            FxUtils.showErrorAlert(translationBundle.getString("FileExecutionError"), ex.getMessage(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
+            FxUtils.showErrorAlert(translationBundle.getString("FileExecutionError"), ex.toString(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
         }
     }
 
@@ -262,14 +262,14 @@ public class MainWindowController {
                         @Override
                         public void run() {
                             logger.error("Error opening the help file", ex);
-                            FxUtils.showErrorAlert(translationBundle.getString("HelpFileError"), ex.getMessage(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
+                            FxUtils.showErrorAlert(translationBundle.getString("HelpFileError"), ex.toString(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
                         }
                     });
                 }
             }), SharedVariables.HELP_DOCUMENTATION_RESOURCE_LOCATION);
         } catch (final IOException ex) {
             logger.error("Error opening the help file", ex);
-            FxUtils.showErrorAlert(translationBundle.getString("HelpFileError"), ex.getMessage(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
+            FxUtils.showErrorAlert(translationBundle.getString("HelpFileError"), ex.toString(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
         }
     }
 
@@ -308,7 +308,7 @@ public class MainWindowController {
                     @Override
                     public void run() {
                         logger.error("Error opening the CodeDead donation website", ex);
-                        FxUtils.showErrorAlert(translationBundle.getString("WebsiteError"), ex.getMessage(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
+                        FxUtils.showErrorAlert(translationBundle.getString("WebsiteError"), ex.toString(), getClass().getResourceAsStream(SharedVariables.ICON_URL));
                     }
                 });
             }
