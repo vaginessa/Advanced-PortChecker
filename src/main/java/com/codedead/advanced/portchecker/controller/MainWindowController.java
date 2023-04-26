@@ -1,10 +1,15 @@
 package com.codedead.advanced.portchecker.controller;
 
+import atlantafx.base.theme.NordDark;
+import atlantafx.base.theme.NordLight;
+import atlantafx.base.theme.PrimerDark;
+import atlantafx.base.theme.PrimerLight;
 import com.codedead.advanced.portchecker.domain.InvalidHttpResponseCodeException;
 import com.codedead.advanced.portchecker.domain.OsCheck;
 import com.codedead.advanced.portchecker.domain.PlatformUpdate;
 import com.codedead.advanced.portchecker.interfaces.IRunnableHelper;
 import com.codedead.advanced.portchecker.utils.*;
+import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -373,6 +378,15 @@ public class MainWindowController {
             primaryStage.setTitle(translationBundle.getString("SettingsWindowTitle"));
             primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/AdvancedPortChecker.png"))));
             primaryStage.setScene(new Scene(root));
+
+            primaryStage.setOnHiding(event -> {
+                switch (settingsController.getProperties().getProperty("theme", "Light").toLowerCase()) {
+                    case "dark" -> Application.setUserAgentStylesheet(new PrimerDark().getUserAgentStylesheet());
+                    case "nordlight" -> Application.setUserAgentStylesheet(new NordLight().getUserAgentStylesheet());
+                    case "norddark" -> Application.setUserAgentStylesheet(new NordDark().getUserAgentStylesheet());
+                    default -> Application.setUserAgentStylesheet(new PrimerLight().getUserAgentStylesheet());
+                }
+            });
 
             logger.info("Showing the SettingsWindow");
             primaryStage.show();

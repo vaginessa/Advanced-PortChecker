@@ -225,14 +225,6 @@ public class SettingsWindowController {
     @FXML
     private void cancelAction(final ActionEvent event) {
         logger.info("Closing SettingsWindow");
-
-        switch (getSettingsController().getProperties().getProperty("theme", "Light")) {
-            case "Dark" -> Application.setUserAgentStylesheet(new PrimerDark().getUserAgentStylesheet());
-            case "NordLight" -> Application.setUserAgentStylesheet(new NordLight().getUserAgentStylesheet());
-            case "NordDark" -> Application.setUserAgentStylesheet(new NordDark().getUserAgentStylesheet());
-            default -> Application.setUserAgentStylesheet(new PrimerLight().getUserAgentStylesheet());
-        }
-
         ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
     }
 
